@@ -16,12 +16,11 @@ class roll{
 var cartCount = 0;
 
 function onLoad(){
-    console.log("local storage at load is " + localStorage.getItem("navCount"));
     var count = localStorage.getItem("navCount");
-    if (count === null) {
+    if (count === null) { // If there's no value stored, start count at 0
         document.getElementById("cart-num").innerText = 0;
     }
-    else {
+    else { // If there's a value stored, set navigation bar counter to that value
         document.getElementById("cart-num").innerText = localStorage.getItem("navCount");
     }
 }
@@ -34,10 +33,10 @@ function addToCart() {
     var delivery = document.getElementById("drop-deliv").value;
     var img = document.getElementsByClassName("cp-img").src;
     const cartItem = new roll(name, quantity, glaze, delivery, img);
-    if (localStorage.getItem("navCount") === null) {
+    if (localStorage.getItem("navCount") === null) { //If there's no value stored, start count at 0
         cartCount = cartCount + 1;
     }
-    else {
+    else { //If there's a value saved in local storage, convert to int and continue count
         var storedCount = parseInt(localStorage.getItem("navCount"));
         cartCount = storedCount + 1;
     }
