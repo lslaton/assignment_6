@@ -15,23 +15,41 @@ class roll{
 // Begins cart count at 0
 var cartCount = 0;
 
+function onLoad(){
+    console.log("local storage at load is " + localStorage.getItem("navCount"));
+    var count = localStorage.getItem("navCount");
+    if (count === null) {
+        document.getElementById("cart-num").innerText = 0;
+    }
+    else {
+        document.getElementById("cart-num").innerText = localStorage.getItem("navCount");
+    }
+}
+
 function addToCart() {
-    cartCount = cartCount + 1; //Increase by 1 every time Add to Cart button is clicked
-    document.getElementById('cart-num').innerText = cartCount; // Update nav bar number
-    localStorage.setItem("cartCount", cartCount); // Save total items in cart in local storage
-    var name = document.getElementById("pb-name").innerText; // Save item info into new object; beginning of implementation for 6B
+    //Save desired item into new roll object
+    var name = document.getElementById("pb-name").innerText;
     var quantity = document.getElementById("drop-qty").value;
     var glaze = document.getElementById("drop-glaze").value;
     var delivery = document.getElementById("drop-deliv").value;
     var img = document.getElementsByClassName("cp-img").src;
     const cartItem = new roll(name, quantity, glaze, delivery, img);
-    const jsonItem = JSON.stringify(cartItem); // Beginning of implementation for 6B to save in local storage and load into cart page
-    localStorage.setItem("cartObj", jsonItem);
-    cartArray.push(jsonItem);
-}
+    if (localStorage.getItem("navCount") === null) {
+        cartCount = cartCount + 1;
+    }
+    else {
+        var storedCount = parseInt(localStorage.getItem("navCount"));
+        cartCount = storedCount + 1;
+    }
+    console.log("storedCount is " + storedCount);
+    console.log("cartCount is " + cartCount);
+    localStorage.setItem("navCount", cartCount);
+    console.log("local storage count is " + localStorage.getItem("navCount"));
+    document.getElementById("cart-num").innerText = localStorage.getItem("navCount");
 
-function onLoad(){
-    var cartNum = localStorage.getItem("cartCount"); // Update each page with current cart count
-    document.getElementById('cart-num').innerText = cartNum;
+    // Beginning of implementation for 6B to save in local storage and load into cart page
+    //const jsonItem = JSON.stringify(cartItem);
+    //localStorage.setItem("cartObj", jsonItem);
+    //cartArray.push(jsonItem);
 }
 
