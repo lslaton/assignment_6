@@ -21,7 +21,7 @@ function onLoad(){
         document.getElementById("cart-num").innerText = 0;
     }
     else { // If there's a value stored, set navigation bar counter to that value
-        document.getElementById("cart-num").innerText = localStorage.getItem("navCount");
+        document.getElementById("cart-num").innerText = count;
     }
 }
 
