@@ -1,0 +1,87 @@
+/* || PRODUCT DETAIL PAGE */
+/* Back to Menu */
+.back{
+    grid-area: 2 / 2 / span 1 /span 1;
+    font: normal 18px/27px Oswald;
+    display: flex;
+    align-items: center;
+    color: #252323;
+}
+
+.back:hover{
+    color: #F5BC3A;
+}
+
+/* Image of caramel pecan cinnamon roll */
+.cp-img {
+    grid-area: 2 / 3 / span 5 / span 5;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #252323;
+    box-sizing: border-box;
+    border-radius: 60px;
+}
+
+/* Description of cinnamon roll */
+.desc{
+    grid-area: 7 / 3 / span 3 / span 5;
+    font: normal 24px/36px Oswald;
+    color: #252323;
+}
+
+/* Title of product */
+.pb-prod-name{
+    grid-area: 2 / 8 / span 2 / span 4;
+    font: bold 72px/91px "Amatic SC";
+    display: flex;
+    align-items: center;
+    color: #FE938C;
+}
+
+
+
+/*!* Help with dropdown from https://www.w3schools.com/css/css_dropdowns.asp *!*/
+
+/* Help with select options from https://www.w3schools.com/howto/howto_custom_select.asp */
+.options {
+    grid-column: 8 / span 3;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+label{
+    font: normal 36px/53px Oswald;
+    margin-top: 10px;
+    padding-right: 20px;
+    color: #252323;
+}
+
+#drop-qty, #drop-glaze, #drop-deliv{
+    position: relative;
+    font: normal 24px/36px Oswald;
+    background-color: #F5BC3A;
+    border-radius: 37.5px;
+    height: 100%;
+    width: 66%;
+}
+
+.select-selected{
+    background-color: #F5BC3A;
+}
+
+/* Add to Cart button */
+.add-to-cart{
+    grid-area: 8 / 8 / span 1 / span 3;
+    background: #FE938C;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 37.5px;
+    font: normal 48px/71px Oswald;
+    color: #252323;
+}
+
+/* Change color when hover over Add to Cart button */
+.add-to-cart:hover{
+    background-color: #F5BC3A;
+}

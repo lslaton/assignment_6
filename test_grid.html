@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bun Bun Bake Shop- Cart</title>
+    <script type="text/javascript" src="test.js"></script>
+    <link href="cart-stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="onLoad()">
+<!-- Grid container -->
+<div class="grid-cart">
+    <div id="cart-items" class="container">
+        <div class = "card">
+            <div class = "edit-remove">
+                <img src="images/caramelPecan.jpg" alt = "caramel pecan cinnamon rolls" class="cart-pic" width="204px" height="170px">
+                <p>Edit | Remove</p>
+            </div>
+            <div class = "text">
+                <p class="item-cart item-txt"><span class="prod-name-cart">Caramel Pecan Cinnamon Roll</span><br>Quantity: 1 <br>Sugar Milk <br>In-Store Pickup</p>
+            </div>
+            <div class = "price">
+                <p>$4.50</p>
+            </div>
+        </div>
+    </div>
+
+    <img src="images/caramelPecan.jpg" alt="caramel pecan cinnamon rolls" class="cp-img">
+    <div class="desc"><p>You get the best of both worlds with this sweet and salty
+        combo. The caramel-and-cinnamon-flavored dough is sprinkled with pecan crumbles
+        for the perfect mix of flavors and texture.</p></div>
+
+    <!-- Product name and options -->
+    <h4 class="pb-prod-name" id="pb-name">Caramel Pecan Cinnamon Roll</h4>
+
+
+    <!--Quantity dropdown-->
+    <div class="options">
+        <label for="drop-qty">Quantity:</label>
+        <select name="drop-qty" id="drop-qty">
+            <option value="roll1">1 Roll- $4.50</option>
+            <option value="roll3">3 Rolls- $10.00</option>
+            <option value="roll6">6 Rolls- $20.00</option>
+            <option value="roll12">12 Rolls- $34.00</option>
+        </select>
+    </div>
+
+    <!-- Glaze dropdown-->
+    <div class="options">
+        <label for="drop-glaze">Quantity:</label>
+        <select name="drop-glaze" id="drop-glaze">
+            <option value="none">None</option>
+            <option value="sugar">Sugar-Milk</option>
+            <option value="vanilla">Vanilla-Milk</option>
+            <option value="choc">Double-Chocolate</option>
+        </select>
+    </div>
+
+    <!--Delivery dropdown-->
+    <div class="options">
+        <label for="drop-deliv">Delivery:</label>
+        <select name="drop-deliv" id="drop-deliv">
+            <option value="pickup">In-Store Pickup</option>
+            <option value="delivery">Delivery</option>
+        </select>
+    </div>
+
+    <!-- Add to Cart button -->
+    <button class="add-to-cart" onclick="addToCart()">Add To Cart</button>
+
+    <!-- Total -->
+    <div class="total">
+        <span class="total">Total:<br>$24.50</span>
+    </div>
+
+    <!-- Checkout and Continue Shopping buttons -->
+    <button class="cart-buttons" id="checkout">Checkout</button>
+    <button class="cart-buttons" id="cont-shopping">Continue Shopping</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bun Bun Bake Shop- Cart</title>
+    <link href="generalStylesheet.css" rel="stylesheet" type="text/css">
+    <link href="cartStylesheet.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="bbMain.js"></script>
+</head>
+<body onload="onLoad()">
+    <!-- Grid container -->
+    <div class="grid-cart">
+        <div class="logo">  <!-- Logo and name -->
+            <a href="index.html" class="logo-txt"><h1 class="logo-txt">Bun Bun Bake Shop</h1></a>
+         <a href="index.html" class="logo-img"><img src="images/logo.png" alt="bread and pastries" class="logo-img"></a>
+        </div>
+        <!-- Navigation bar -->
+        <div class="nav-bar">
+            <div class="nav-bar home">  <!-- Home Section -->
+                <a href="index.html"><img src="icons/homeIcon.png" alt="home" class="nav-bar-icon nav-bar home"></a>
+                <a href="index.html" class="nav-txt"><h4>Home</h4></a>
+            </div>
+
+            <div class="nav-bar menu">  <!-- Menu section -->
+                <img src="icons/menuIcon.png" alt="utensils" class="nav-bar-icon">
+                <a href="productBrowsing.html" class="nav-txt"><h4 class="nav-txt" id="menu-txt">Menu</h4></a>
+            </div>
+
+            <div class="nav-bar cart">  <!-- Cart section -->
+                <div class="cart-icons nav-bar-icon">
+                    <img src="icons/cartIconUpdated.png" alt="cart">
+                    <p class="cart-num navBarIcon" id="cart-num">0</p>
+                </div>
+                <h4 class="nav-txt" id="cart-txt">Cart</h4>
+            </div>
+
+            <div class="nav-bar about-us">  <!-- About Us section -->
+                <img src="icons/aboutUsIcon.png" alt="star" class="nav-bar-icon">
+                <h4 class="nav-txt">About Us</h4>
+            </div>
+        </div>
+
+        <!-- Navigation bar separator -->
+        <img src="images/line1.png" alt="yellow line" id="menu-line">
+
+        <!-- Cart header image and text -->
+        <div class="cart-header">
+            <img src="images/cartHeader.jpg" alt="cinnamon rolls" id="cart-img-header">
+            <h2 id="cart-title">Cart</h2>
+        </div>
+
+        <!-- Cart container -->
+        <div id="cart-items" class="container">
+            <div class = "card"> <!-- Card div- holds the image with edit/remove, as well as text and price sections -->
+                <div class = "edit-remove">
+                    <img src="images/caramelPecan.jpg" alt = "caramel pecan cinnamon rolls" class="cart-pic" width="204" height="170">
+                    <p>Edit | Remove</p>
+                </div>
+                <div class = "text"> <!-- Text div to hold name of product, quantity, glaze, and delivery method -->
+                    <p class="item-cart item-txt"><span class="prod-name-cart">Caramel Pecan Cinnamon Roll</span><br>Quantity: 1 <br>Sugar Milk <br>In-Store Pickup</p>
+                </div>
+                <div class = "price"> <!-- Price div to hold price of item in cart -->
+                    <p>$4.50</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total -->
+        <div class="total">
+            <span class="total">Total:<br>$24.50</span>
+        </div>
+
+        <!-- Checkout and Continue Shopping buttons -->
+        <button class="cart-buttons" id="checkout">Checkout</button>
+        <button class="cart-buttons" id="cont-shopping">Continue Shopping</button>
+    </div>
+</body>
+</html>

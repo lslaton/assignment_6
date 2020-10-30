@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bun Bun Bake Shop- Menu</title>
+    <link href="generalStylesheet.css" rel="stylesheet" type="text/css">
+    <link href="prodBrowsingStylesheet.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="bbMain.js"></script>
+</head>
+<body onload="onLoad()">
+    <!-- Grid container -->
+    <div class="grid-prod-browsing">
+        <div class="logo">  <!-- Logo and name -->
+            <a href="index.html" class="logo-txt"><h1 class="logo-txt">Bun Bun Bake Shop</h1></a>
+            <a href="index.html" class="logo-img"><img src="images/logo.png" alt="bread and pastries" class="logo-img"></a>
+        </div>
+
+        <!-- Navigation bar -->
+        <div class="nav-bar">
+            <div class="nav-bar home">  <!-- Home Section -->
+                <a href="index.html"><img src="icons/homeIcon.png" alt="home" class="nav-bar-icon nav-bar home"></a>
+                <a href="index.html"  class="nav-txt"><h4>Home</h4></a>
+            </div>
+
+            <div class="nav-bar menu">  <!-- Menu section -->
+                <img src="icons/menuIcon.png" alt="utensils" class="nav-bar-icon">
+                <h4 class="nav-txt" id="menu-txt">Menu</h4>
+            </div>
+
+            <div class="nav-bar cart">  <!-- Cart section -->
+                <div class="cart-icons nav-bar-icon">
+                    <a href="cart.html"><img src="icons/cartIconUpdated.png" alt="cart"></a>
+                    <a href="cart.html"><p class="cart-num navBarIcon" id="cart-num">0</p></a>
+                </div>
+                <a href="cart.html" class="nav-txt">Cart</a>
+            </div>
+
+            <div class="nav-bar about-us">  <!-- About Us section -->
+                <img src="icons/aboutUsIcon.png" alt="star" class="nav-bar-icon">
+                <h4 class="nav-txt">About Us</h4>
+            </div>
+        </div>
+
+        <!-- Navigation bar separator -->
+        <img src="images/line1.png" alt="yellow line" id="menu-line">
+
+        <!-- Menu header image and text -->
+        <div class="menu-header">
+            <img src="images/menuHeader.jpg" alt="white paper with gold clip" id="menu-img">
+            <h2 id="menu-title">Menu</h2>
+        </div>
+
+        <!-- Product images -->
+        <img src="images/original.jpg" alt="original cinnamon rolls" class="prod-img" id="original-img">
+        <img src="images/origGF.jpg" alt="original gluten-free cinnamon rolls" class="prod-img" id="original-gf-img">
+        <img src="images/blackberry.jpg" alt="blackberry cinnamon rolls" class="prod-img" id="blackberry-img">
+        <a href="productInfo.html" class="prod-img caramel-pecan" id="link"><img src="images/caramelPecan.jpg" alt="caramel pecan cinnamon rolls" class="prod-img" id="caramel-pecan-img"></a>
+        <img src="images/pumpkinSpice.jpg" alt="pumpkin spice cinnamon rolls" class="prod-img" id="pumpkin-spice-img">
+        <img src="images/walnut.jpg" alt="walnut cinnamon rolls" class="prod-img" id="walnut-img">
+
+        <!-- Product name -->
+        <h3 class="prod-name" id="orig-txt">Original</h3>
+        <h3 class="prod-name" id="orig-gf-txt">Original (GF)</h3>
+        <h3 class="prod-name" id="blackberry-txt">Blackberry</h3>
+        <h3 class="prod-name" id="caramel-pecan-txt"><a href="productInfo.html" class="prod-name">Caramel Pecan</a> </h3>
+        <h3 class="prod-name" id="pumpkin-spice-txt">Pumpkin Spice</h3>
+        <h3 class="prod-name" id="walnut-txt">Walnut</h3>
+
+        <!-- Product prices -->
+        <h4 class="prod-price" id="orig-price">$4.00</h4>
+        <h4 class="prod-price" id="orig-gf-price">$4.00</h4>
+        <h4 class="prod-price" id="blackberry-price">$4.50</h4>
+        <h4 class="prod-price" id="caramel-pecan-price">$4.50</h4>
+        <h4 class="prod-price" id="pumpkin-spice-price">$4.50</h4>
+        <h4 class="prod-price" id="walnut-price">$4.50</h4>
+    </div>
+
+</body>
+</html>

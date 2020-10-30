@@ -1,0 +1,114 @@
+/* || GRID SET UP */
+/* Home Page Grid */
+.grid{
+    display: grid;
+    grid-template: repeat(10, 75px) / repeat(13, 93px);
+    grid-gap: 20px 20px;
+}
+
+/* Product Browsing Page Grid */
+.grid-prod-browsing{
+    display: grid;
+    grid-template: repeat(16, 75px) / repeat(13, 93px);
+    grid-gap: 20px 20px;
+}
+
+/* Product Info Page Grid and Cart */
+.grid-prod-info, .grid-cart{
+    display: grid;
+    grid-template: repeat(8, 75px) / repeat(13, 93px);
+    grid-gap: 20px 20px;
+}
+
+/* Cart Page */
+.grid-cart{
+    display: grid;
+    grid-template: repeat(8, 75px) / repeat(13, 93px);
+    grid-gap: 20px 20px;
+}
+
+/* || NAV BAR SET UP */
+/* Set position of logo and text in Nav Bar */
+.logo {
+    grid-area: 1 / 2 / span 1 / span 3;
+    position: relative;
+    text-align: center;
+}
+.logo-img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.logo-txt{
+    left: 0;
+    position:absolute;
+    width: 100%;
+    font: bold 48px/0 'Amatic SC';
+    align-items: center;
+    text-align: center;
+    color: #FE938C;
+}
+
+/* Helped me with flex setup: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+/* https://www.w3schools.com/css/css_navbar_horizontal.asp */
+/* https://www.w3schools.com/howto/howto_js_topnav.asp*/
+.nav-bar{
+    grid-area: 1 / 8 / span 1 / span 5;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-basis: 132px;
+    justify-content: space-around;
+    font: normal 24px/0 Oswald;
+    color: #252323;
+}
+
+.nav-bar-icon{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Align left side of icon and right side of text in nav bar */
+.home, .menu, .cart, .about-us{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+/* Set number of items in cart over cart icon */
+.cart-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+}
+
+#cart-num{
+    position: absolute;
+    top: -6px;
+    left: 14px;
+}
+
+/* Link styling: https://www.w3schools.com/css/css_link.asp */
+.nav-txt:link, .nav-txt:visited, #cart-num{
+    color: #252323;
+    text-decoration: none;
+}
+
+.nav-txt:hover{
+    color: #F5BC3A;
+}
+
+/* Indicates current page in nav bar */
+#home-txt, #menu-txt, #cart-txt{
+    color: #F5BC3A;
+}
+
+/* Sets nav bar separator between grid margins */
+#menu-line{
+    position: absolute;
+    left: 0;
+    top: 75px;
+}

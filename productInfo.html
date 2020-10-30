@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bun Bun Bake Shop- Pecan Caramel Cinnamon Roll</title>
+    <link href="generalStylesheet.css" rel="stylesheet" type="text/css">
+    <link href="productInfoStylesheet.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="bbMain.js"></script>
+</head>
+<body onload="onLoad()">
+    <!-- Grid container -->
+    <div class="grid-prod-info">
+        <div class="logo">  <!-- Logo and name -->
+            <a href="index.html" class="logo-txt"><h1 class="logo-txt">Bun Bun Bake Shop</h1></a>
+            <a href="index.html" class="logo-img"><img src="images/logo.png" alt="bread and pastries" class="logo-img"></a>
+        </div>
+
+        <!-- Navigation bar -->
+        <div class="nav-bar">
+            <div class="nav-bar home">  <!-- Home Section -->
+                <a href="index.html"><img src="icons/homeIcon.png" alt="home" class="nav-bar-icon nav-bar home"></a>
+                <a href="index.html"  class="nav-txt"><h4>Home</h4></a>
+            </div>
+
+            <div class="nav-bar menu">  <!-- Menu section -->
+                <img src="icons/menuIcon.png" alt="utensils" class="nav-bar-icon">
+                <a href="productBrowsing.html" class="nav-txt"><h4 class="nav-txt" id="menu-txt">Menu</h4></a>
+            </div>
+
+            <div class="nav-bar cart">  <!-- Cart section -->
+                <div class="cart-icons nav-bar-icon">
+                    <a href="cart.html"><img src="icons/cartIconUpdated.png" alt="cart"></a>
+                    <a href="cart.html"><p class="cart-num navBarIcon" id="cart-num">0</p></a>
+                </div>
+                <a href="cart.html" class="nav-txt">Cart</a>
+            </div>
+
+            <div class="nav-bar about-us">  <!-- About Us section -->
+                <img src="icons/aboutUsIcon.png" alt="star" class="nav-bar-icon">
+                <h4 class="nav-txt">About Us</h4>
+            </div>
+        </div>
+
+        <!-- Navigation bar separator -->
+        <img src="images/line1.png" alt="yellow line" id="menu-line">
+
+        <!-- Back to menu button -->
+        <div class="back">
+            <a href="productBrowsing.html"><img src="icons/back.jpg" alt="pink back arrow" class="back"></a>
+            <a href="productBrowsing.html"><p class="back">Back</p></a>
+        </div>
+
+        <!-- Product image and description-->
+        <img src="images/caramelPecan.jpg" alt="caramel pecan cinnamon rolls" class="cp-img">
+        <div class="desc"><p>You get the best of both worlds with this sweet and salty
+        combo. The caramel-and-cinnamon-flavored dough is sprinkled with pecan crumbles
+        for the perfect mix of flavors and texture.</p></div>
+
+        <!-- Product name and options -->
+        <h4 class="pb-prod-name" id="pb-name">Caramel Pecan Cinnamon Roll</h4>
+
+
+        <!--Quantity dropdown-->
+        <div class="options">
+            <label for="drop-qty">Quantity:</label>
+            <select name="drop-qty" id="drop-qty">
+                <option value="roll1">1 Roll- $4.50</option>
+                <option value="roll3">3 Rolls- $10.00</option>
+                <option value="roll6">6 Rolls- $20.00</option>
+                <option value="roll12">12 Rolls- $34.00</option>
+            </select>
+        </div>
+
+        <!-- Glaze dropdown-->
+        <div class="options">
+            <label for="drop-glaze">Quantity:</label>
+            <select name="drop-glaze" id="drop-glaze">
+                <option value="none">None</option>
+                <option value="sugar">Sugar-Milk</option>
+                <option value="vanilla">Vanilla-Milk</option>
+                <option value="choc">Double-Chocolate</option>
+            </select>
+        </div>
+
+        <!--Delivery dropdown-->
+        <div class="options">
+            <label for="drop-deliv">Delivery:</label>
+            <select name="drop-deliv" id="drop-deliv">
+                <option value="pickup">In-Store Pickup</option>
+                <option value="delivery">Delivery</option>
+            </select>
+        </div>
+
+        <!-- Add to Cart button -->
+        <button class="add-to-cart" onclick="addToCart()">Add To Cart</button>
+    </div>
+
+</body>
+</html>

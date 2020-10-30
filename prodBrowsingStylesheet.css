@@ -1,0 +1,142 @@
+/* || PRODUCT BROWSING PAGE */
+/* Menu header image and text */
+.menu-header, .cart-header {
+    grid-area: 2 / 2 / span 2 / span 11;
+    align-items: center;
+    text-align: center;
+}
+
+#menu-img, #cart-img{
+    width: 100%;
+    height: 100%;
+    border: 4px solid #252323;
+    box-sizing: border-box;
+    border-radius: 60px;
+}
+
+#menu-title, #cart-title{
+    position: relative;
+    align-content: center;
+    top: -125%;
+    font: bold 96px/121px "Amatic SC";
+    color: #FE938C;
+    text-align: center;
+}
+
+/* Setting for each product image on the browsing page */
+.prod-img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #252323;
+    box-sizing: border-box;
+    border-radius: 60px;
+}
+
+/* Remove border from link on caramel pecan product image */
+#link{
+    border: none;
+}
+
+/* Setting the different images for each product */
+#original-img{
+    grid-area: 5 / 2 / span 3 / span 3;
+}
+
+#original-gf-img{
+    grid-area: 9 / 2 / span 3 / span 3;
+}
+
+#blackberry-img{
+    grid-area: 13 / 2 / span 3 / span 3;
+}
+
+#caramel-pecan-img, #link{
+    grid-area: 5 / 8 / span 3 / span 3;
+}
+
+#pumpkin-spice-img{
+    grid-area: 9 / 8 / span 3 / span 3;
+}
+
+#walnut-img{
+    grid-area: 13 / 8 / span 3 / span 3;
+}
+
+/* Setting product name information */
+.prod-name{
+    font: bold 64px/81px "Amatic SC";
+    display: flex;
+    align-items: center;
+    text-decoration-line: underline;
+    color: #F5BC3A;
+}
+
+/* Setting hover over product name to change image */
+/* https://www.w3schools.com/css/css_link.asp */
+.prod-name:link, .prod-name:visited{
+    color: #F5BC3A;
+    text-decoration: none;
+}
+
+/* Changes name of product on Product Browsing, and back button on Product Information page */
+.prod-name:hover{
+    color: #FE938C;
+}
+
+/* Setting location of product name */
+#orig-txt{
+    grid-area: 5 / 5 / span 2 / span 2;
+}
+
+#orig-gf-txt{
+    grid-area: 9 / 5 / span 2 / span 2;
+}
+
+#blackberry-txt{
+    grid-area: 13 / 5 / span 2 / span 2;
+}
+
+#caramel-pecan-txt{
+    grid-area: 5 / 11 / span 2 / span 2;
+}
+
+#pumpkin-spice-txt{
+    grid-area: 9 / 11 / span 2 / span 2;
+}
+
+#walnut-txt{
+    grid-area: 13 / 11 / span 2 / span 2;
+}
+
+/* Setting product price text */
+.prod-price{
+    font: normal 36px/53px Oswald;
+    display: flex;
+    align-items: center;
+    color: #252323;
+}
+
+/* Setting product price location */
+#orig-price{
+    grid-area: 6 / 5 / span 3 / span 3;
+}
+
+#orig-gf-price{
+    grid-area: 10 / 5 / span 3 / span 3;
+}
+
+#blackberry-price{
+    grid-area: 14 / 5 / span 3 / span 3;
+}
+
+#caramel-pecan-price{
+    grid-area: 6 / 11 / span 3 / span 3;
+}
+
+#pumpkin-spice-price{
+    grid-area: 10 / 11 / span 3 / span 3;
+}
+
+#walnut-price{
+    grid-area: 14 / 11 / span 3 / span 3;
+}
