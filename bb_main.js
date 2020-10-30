@@ -33,18 +33,16 @@ function addToCart() {
     var delivery = document.getElementById("drop-deliv").value;
     var img = document.getElementsByClassName("cp-img").src;
     const cartItem = new roll(name, quantity, glaze, delivery, img);
-    if (localStorage.getItem("navCount") === null) { //If there's no value stored, start count at 0
+    var storageCount = localStorage.getItem("navCount");
+    if (storageCount === null) { //If there's no value stored, start count at 0
         cartCount = cartCount + 1;
     }
     else { //If there's a value saved in local storage, convert to int and continue count
-        var storedCount = parseInt(localStorage.getItem("navCount"));
+        var storedCount = parseInt(storageCount);
         cartCount = storedCount + 1;
     }
-    console.log("storedCount is " + storedCount);
-    console.log("cartCount is " + cartCount);
     localStorage.setItem("navCount", cartCount);
-    console.log("local storage count is " + localStorage.getItem("navCount"));
-    document.getElementById("cart-num").innerText = localStorage.getItem("navCount");
+    document.getElementById("cart-num").innerText = cartCount;
 
     // Beginning of implementation for 6B to save in local storage and load into cart page
     //const jsonItem = JSON.stringify(cartItem);
