@@ -24,10 +24,12 @@
 }
 
 /* Format picture of item in cart*/
+
 .item-cart{
     font: normal 24px/36px Oswald;
     display: flex;
     justify-content: flex-start;
+    white-space: pre-wrap;
 }
 
 .cart-pic{
@@ -59,7 +61,7 @@
 }
 
 /* Cart total */
-.total{
+#totalDiv, #totalText{
     grid-area: 4 / 9 / span 2 / span 3;
     font: normal 41px/71px Oswald;
     text-align: center;
