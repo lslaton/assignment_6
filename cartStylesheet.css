@@ -23,41 +23,58 @@
     text-align: center;
 }
 
-/* Format picture of item in cart*/
-
-.item-cart{
-    font: normal 24px/36px Oswald;
+.container{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    grid-area: 4 / 3 / span 3 / span 6;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
     justify-content: flex-start;
-    white-space: pre-wrap;
+    align-items: flex-start;
+    padding: 20px;
 }
 
-.cart-pic{
-    border: 2px solid #252323;
-    box-sizing: border-box;
-    border-radius: 60px;
-}
-
-/* Edit | Remove text */
-.edit-remove{
+.edit-remove {
+    display: flex;
+    flex-direction: column;
     font: normal 24px/36px Oswald;
     color: #FE938C;
 }
 
-/* Text for item in cart */
-.item-txt{
+.text {
     grid-area: 4 / 5 / span 2 / span 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-top: -24px;
+    white-space: pre-wrap;
     align-items: flex-start;
     padding-left: 20px;
+    font: normal 32px/48px Oswald;
     color: #252323;
 }
 
-.prod-name-cart{
+.prod-name {
     color: #F5BC3A;
-    margin-bottom: -36px;
+}
+
+.price {
+    grid-area: 7 / 9 / span 2 / span 3;
+    font: normal 36px/48px Oswald;
+    text-align: start;
+    color: #F5BC3A;
+}
+
+.cart-pic {
+    grid-area: 4 / 3 / span 2 / span 2;
+    border: 2px solid #252323;
+    box-sizing: border-box;
+    border-radius: 60px;
 }
 
 /* Cart total */
@@ -85,38 +102,4 @@
     grid-area: 7 / 9 / span 1 / span 3;
     font: normal 36px/53.35px Oswald;
     background: #F5BC3A;
-}
-
-/* Beginning to format container for Assignment 6B- this is still in progress */
-.container{
-    grid-area: 4 / 3 / span 3 / span 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px;
-}
-
-.edit-remove {
-    display: flex;
-    flex-direction: column;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: -24px;
-    grid-row: span 2;
-}
-
-.price {
-    font: normal 24px/36px Oswald;
-    color: #252323;
 }

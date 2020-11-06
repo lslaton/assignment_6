@@ -1,7 +1,6 @@
 // Make Roll class
 class Roll {
-    constructor(name, desc, price, image) {
-        this.name = name
+    constructor(desc, price, image) {
         this.desc = desc
         this.price = price
         this.image = image
@@ -88,6 +87,8 @@ function CardTemplate(parent, imgURL, text, price) {
 // This makes the description text for the item in the cart, including name, quantity, glaze, and delivery method
 function bodyText(name, quantity, glaze, delivery) {
 
+    name.className = "prod-name";
+
     // Singular roll in description
     if (quantity === 1) {
         return name + "\n" + quantity + " Roll" + "\n" + glaze + "\n" + delivery;
@@ -133,7 +134,7 @@ function addToCart() {
     let price = calculatePrice(name, quantity);
 
     // Create new roll object and push to array, set in local storage
-    let roll = new Roll(name, desc, price, imgsrc);
+    let roll = new Roll(desc, price, imgsrc);
 
     // If local storage is null, start new array and push to local storage
     if (localStorage.getItem("myItem") === null) {
