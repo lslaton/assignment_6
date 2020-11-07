@@ -11,7 +11,7 @@ class Roll {
 let cartArray = [];
 
 // Begins cart count at 0
-let cartCount = 0;
+//let cartCount = 0;
 
 // onLoad function to keep cart count on non-cart pages
 function onLoad(){
@@ -68,9 +68,13 @@ function CardTemplate(parent, imgURL, text, price) {
     removeLink.className = "edit-remove";
     removeLink.innerHTML = "Remove";
     erContainer.appendChild(removeLink);
-    removeLink.onclick = function (index){
+    removeLink.onclick = function (){
+        // Remove card from divContainer
         parent.removeChild(divContainer);
+        // Create updated array with cart items
         let containerArray = []
+        let totalPrice = 0.00;
+        // Iterate through remaining child elements
         for (let i = 0; i < parent.childElementCount; i++) {
             let child = parent.children[i];
             let containerText = child.getElementsByClassName("item-cart");
@@ -80,11 +84,19 @@ function CardTemplate(parent, imgURL, text, price) {
             let containerImg = child.getElementsByClassName("cart-pic");
             let rollImg = containerImg[0].src;
 
+            // Create new Roll Object for each child and add to new array
             let newRoll = new Roll(rollDesc, rollPrice, rollImg);
+            totalPrice = totalPrice + totalPriceCart(newRoll.price);
             containerArray.push(newRoll);
         }
+
+        // Save new array to local storage
         const jsonItem = JSON.stringify(containerArray);
         localStorage.setItem("myItem", jsonItem);
+        localStorage.setItem("navCount", JSON.stringify(containerArray.length));
+        document.getElementById("cart-num").innerText = containerArray.length.toString();
+        totalPriceString(totalPrice);
+
     }
 
     // Make description of item in cart
@@ -154,6 +166,7 @@ function addToCart() {
     // Create new roll object and push to array, set in local storage
     let roll = new Roll(desc, price, imgsrc);
 
+
     // If local storage is null, start new array and push to local storage
     if (localStorage.getItem("myItem") === null) {
         cartArray.push(roll);
@@ -167,24 +180,10 @@ function addToCart() {
         const jsonItem = JSON.stringify(savedArray);
         localStorage.setItem("myItem", jsonItem);
     }
-
-    // Update cart count in navigation bar
-    let storageCount = localStorage.getItem("navCount");
-
-    // If there's no value stored, start count at 0
-    if (storageCount === null) {
-        cartCount = cartCount + 1;
-    }
-
-    // If there's a value saved in local storage, convert to int and continue count
-    else {
-        let storedCount = parseInt(storageCount);
-        cartCount = storedCount + 1;
-    }
-
-    // Update value in local storage and assign it to nav bar
-    localStorage.setItem("navCount", cartCount.toString());
-    document.getElementById("cart-num").innerText = cartCount.toString();
+    let storageArray = JSON.parse(localStorage.getItem("myItem"));
+    let storageCount = storageArray.length;
+    localStorage.setItem("navCount", storageCount);
+    document.getElementById("cart-num").innerText = storageCount.toString();
 }
 
 // onLoad function for cart that updates nav bar and loads items from local storage
@@ -216,14 +215,9 @@ function onLoadCart() {
                   totalPrice = totalPrice + totalPriceCart(savedRoll.price);
               }
          }
-         let stringTotal =  totalPrice.toString();
-          let decimal = stringTotal.slice(-2);
-          let wholeNumber = stringTotal.substring(0, stringTotal.length-2) + "." + decimal;
-        // Update total of cart
-        let totalText = document.getElementById("totalText");
-        totalText.innerHTML = "Total <br> $" + wholeNumber;
-        let totalDiv = document.getElementById("totalDiv");
-        totalDiv.appendChild(totalText);
+
+        // Create total cart text and add to site
+        totalPriceString(totalPrice);
     }
 }
 
@@ -232,4 +226,20 @@ function totalPriceCart(price) {
     let intPrice = stringPrice.replace(".", "");
     intPrice = parseInt(intPrice);
     return intPrice;
+}
+
+function totalPriceString(price) {
+    let wholeNumber;
+    if (price === 0) {
+        wholeNumber = "0.00"
+    }
+    else {
+        let stringTotal =  price.toString();
+        let decimal = stringTotal.slice(-2);
+        wholeNumber = stringTotal.substring(0, stringTotal.length-2) + "." + decimal;
+    }
+    let totalText = document.getElementById("totalText");
+    totalText.innerHTML = "Total <br> $" + wholeNumber;
+    let totalDiv = document.getElementById("totalDiv");
+    totalDiv.appendChild(totalText);
 }
