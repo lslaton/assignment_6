@@ -58,16 +58,34 @@ function CardTemplate(parent, imgURL, text, price) {
     erContainer.appendChild(img);
 
     // Make link to edit
-    let editLink = document.createElement('link');
+    let editLink = document.createElement('button');
     editLink.className = "edit-remove";
     editLink.innerHTML = "Edit";
     erContainer.appendChild(editLink);
 
     // Make link to remove
-    let removeLink = document.createElement('link');
+    let removeLink = document.createElement('button');
     removeLink.className = "edit-remove";
     removeLink.innerHTML = "Remove";
     erContainer.appendChild(removeLink);
+    removeLink.onclick = function (index){
+        parent.removeChild(divContainer);
+        let containerArray = []
+        for (let i = 0; i < parent.childElementCount; i++) {
+            let child = parent.children[i];
+            let containerText = child.getElementsByClassName("item-cart");
+            let rollDesc = containerText[0].innerHTML;
+            let containerPrice = child.getElementsByClassName("price");
+            let rollPrice = containerPrice[0].innerText;
+            let containerImg = child.getElementsByClassName("cart-pic");
+            let rollImg = containerImg[0].src;
+
+            let newRoll = new Roll(rollDesc, rollPrice, rollImg);
+            containerArray.push(newRoll);
+        }
+        const jsonItem = JSON.stringify(containerArray);
+        localStorage.setItem("myItem", jsonItem);
+    }
 
     // Make description of item in cart
     let itemText = document.createElement("p");
@@ -215,4 +233,3 @@ function totalPriceCart(price) {
     intPrice = parseInt(intPrice);
     return intPrice;
 }
-
