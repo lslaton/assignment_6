@@ -122,7 +122,7 @@ function CardTemplate(parent, imgURL, text, price) {
     return divContainer;
 }
 
-// This makes the description text for the item in the cart, including name, quantity, glaze, and delivery method
+// Makes the description text for the item in the cart, including name, quantity, glaze, and delivery method
 function bodyText(name, quantity, glaze, delivery) {
     name.className = "prod-name";
 
@@ -138,19 +138,43 @@ function bodyText(name, quantity, glaze, delivery) {
 
 }
 
-// Functions to calculate price according to quantity
+// Calculates price according to quantity
 function calculatePrice(rollType, quantity) {
 
     // If roll is original or original GF, price is $4.00
     if (rollType === "original" || rollType === "originalGF") {
-        let priceOriginal = (4.00 * quantity).toFixed(2);
+        let priceOriginal;
+        if (quantity === 1) {
+            priceOriginal = 4.00.toFixed(2);
+        }
+        else if (quantity === 3) {
+            priceOriginal = 9.00.toFixed(2);
+        }
+        else if (quantity === 6){
+            priceOriginal = 18.00.toFixed(2);
+        }
+        else {
+            priceOriginal = 30.00.toFixed(2);
+        }
         let stringPriceOriginal = priceOriginal.toString();
         return "$" + stringPriceOriginal;
     }
 
     // Any other type of roll, price is $4.50
     else {
-        let price = (4.50 * quantity).toFixed(2);
+        let price;
+        if (quantity === 1) {
+            price = 4.50.toFixed(2);
+        }
+        else if (quantity === 3) {
+            price = 10.00.toFixed(2);
+        }
+        else if (quantity === 6){
+            price = 20.00.toFixed(2);
+        }
+        else {
+            price = 34.00.toFixed(2);
+        }
         let stringPrice = price.toString();
         return "$" + stringPrice;
     }
@@ -200,10 +224,14 @@ function onLoadCart() {
 
     // Pull items from local storage
     const cart = localStorage.getItem("myItem");
+
+    // If cart is empty, generate empty cart text and set total to 0
     if ((cart === null) || (cart === "[]")) {
         emptyCartText();
         totalPriceString(0);
     }
+
+    // If cart has items, make card templates and calculate price
     else {
         const savedItems = JSON.parse(cart);
         let totalPrice = 0.00;
@@ -216,11 +244,12 @@ function onLoadCart() {
               }
          }
 
-        // Create total cart text and add to site
+        // Insert total price text
         totalPriceString(totalPrice);
     }
 }
 
+// Calculates int value of total price of cart
 function totalPriceCart(price) {
     let stringPrice = price.substring(1);
     let intPrice = stringPrice.replace(".", "");
@@ -228,22 +257,29 @@ function totalPriceCart(price) {
     return intPrice;
 }
 
+// Converts int value of total price of cart to a string, and inserts it into HTML
 function totalPriceString(price) {
     let wholeNumber;
+
+    // If price is $0
     if (price === 0) {
         wholeNumber = "0.00"
     }
+
     else {
         let stringTotal =  price.toString();
         let decimal = stringTotal.slice(-2);
         wholeNumber = stringTotal.substring(0, stringTotal.length-2) + "." + decimal;
     }
+
+    // Insert string into HTML element
     let totalText = document.getElementById("totalText");
     totalText.innerHTML = "Total <br> $" + wholeNumber;
     let totalDiv = document.getElementById("totalDiv");
     totalDiv.appendChild(totalText);
 }
 
+// Create text to display when cart is empty
 function emptyCartText() {
     let emptyCart = document.createElement("h2");
     emptyCart.className = "text";
