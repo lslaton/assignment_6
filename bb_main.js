@@ -10,19 +10,41 @@ class Roll {
 // Initialize array to hold cart items
 let cartArray = [];
 
-// onLoad function to keep cart count on non-cart pages
-function onLoad(){
-    let count = localStorage.getItem("navCount");
+//Save desired item into new roll object
+function addToCart() {
+    // Need name, qualities, price, image
+    let name = document.getElementById("pb-name").innerText;
+    let quantity = parseInt(document.getElementById("drop-qty").value);
+    let glaze = document.getElementById("drop-glaze").value;
+    let delivery = document.getElementById("drop-deliv").value;
+    let img = document.getElementById("cp-img");
+    let imageSource = img.src;
 
-    // If there's no value stored, start count at 0
-    if (count === null) {
-        document.getElementById("cart-num").innerText = "0";
+    // Format description and price for containers
+    let desc = bodyText(name, quantity, glaze, delivery);
+    let price = calculatePrice(name, quantity);
+
+    // Create new roll object and push to array, set in local storage
+    let roll = new Roll(desc, price, imageSource);
+
+
+    // If local storage is null, start new array and push to local storage
+    if (localStorage.getItem("myItem") === null) {
+        cartArray.push(roll);
+        const jsonItem = JSON.stringify(cartArray);
+        localStorage.setItem("myItem", jsonItem);
     }
-
-    // If there's a value stored, set navigation bar counter to that value
+    // If local storage has something in it, pull it and add new item
     else {
-        document.getElementById("cart-num").innerText = count;
+        let savedArray = JSON.parse(localStorage.getItem("myItem"));
+        savedArray.push(roll);
+        const jsonItem = JSON.stringify(savedArray);
+        localStorage.setItem("myItem", jsonItem);
     }
+    let storageArray = JSON.parse(localStorage.getItem("myItem"));
+    let storageCount = storageArray.length;
+    localStorage.setItem("navCount", storageCount);
+    document.getElementById("cart-num").innerText = storageCount.toString();
 }
 
 // Creating card elements for div
@@ -122,6 +144,53 @@ function CardTemplate(parent, imgURL, text, price) {
     return divContainer;
 }
 
+// onLoad function to keep cart count on non-cart pages
+function onLoad(){
+    let count = localStorage.getItem("navCount");
+
+    // If there's no value stored, start count at 0
+    if (count === null) {
+        document.getElementById("cart-num").innerText = "0";
+    }
+
+    // If there's a value stored, set navigation bar counter to that value
+    else {
+        document.getElementById("cart-num").innerText = count;
+    }
+}
+
+// onLoad function for cart that updates nav bar and loads items from local storage
+function onLoadCart() {
+    // Call onLoad() to set nav bar count
+    onLoad();
+
+    // Pull items from local storage
+    const cart = localStorage.getItem("myItem");
+
+    // If cart is empty, generate empty cart text and set total to 0
+    if ((cart === null) || (cart === "[]")) {
+        emptyCartText();
+        totalPriceString(0);
+    }
+
+    // If cart has items, make card templates and calculate price
+    else {
+        const savedItems = JSON.parse(cart);
+        let totalPrice = 0.00;
+        for (let index in savedItems){
+            if (savedItems.hasOwnProperty(index)) {
+                let savedRoll = savedItems[index];
+                CardTemplate(document.getElementById("cart-items"), savedRoll.image, savedRoll.desc, savedRoll.price);
+                cartArray.push(savedRoll);
+                totalPrice = totalPrice + totalPriceCart(savedRoll.price);
+            }
+        }
+
+        // Insert total price text
+        totalPriceString(totalPrice);
+    }
+}
+
 // Makes the description text for the item in the cart, including name, quantity, glaze, and delivery method
 function bodyText(name, quantity, glaze, delivery) {
     name.className = "prod-name";
@@ -177,75 +246,6 @@ function calculatePrice(rollType, quantity) {
         }
         let stringPrice = price.toString();
         return "$" + stringPrice;
-    }
-}
-
-//Save desired item into new roll object
-function addToCart() {
-    // Need name, qualities, price, image
-    let name = document.getElementById("pb-name").innerText;
-    let quantity = parseInt(document.getElementById("drop-qty").value);
-    let glaze = document.getElementById("drop-glaze").value;
-    let delivery = document.getElementById("drop-deliv").value;
-    let img = document.getElementById("cp-img");
-    let imageSource = img.src;
-
-    // Format description and price for containers
-    let desc = bodyText(name, quantity, glaze, delivery);
-    let price = calculatePrice(name, quantity);
-
-    // Create new roll object and push to array, set in local storage
-    let roll = new Roll(desc, price, imageSource);
-
-
-    // If local storage is null, start new array and push to local storage
-    if (localStorage.getItem("myItem") === null) {
-        cartArray.push(roll);
-        const jsonItem = JSON.stringify(cartArray);
-        localStorage.setItem("myItem", jsonItem);
-    }
-    // If local storage has something in it, pull it and add new item
-    else {
-        let savedArray = JSON.parse(localStorage.getItem("myItem"));
-        savedArray.push(roll);
-        const jsonItem = JSON.stringify(savedArray);
-        localStorage.setItem("myItem", jsonItem);
-    }
-    let storageArray = JSON.parse(localStorage.getItem("myItem"));
-    let storageCount = storageArray.length;
-    localStorage.setItem("navCount", storageCount);
-    document.getElementById("cart-num").innerText = storageCount.toString();
-}
-
-// onLoad function for cart that updates nav bar and loads items from local storage
-function onLoadCart() {
-    // Call onLoad() to set nav bar count
-    onLoad();
-
-    // Pull items from local storage
-    const cart = localStorage.getItem("myItem");
-
-    // If cart is empty, generate empty cart text and set total to 0
-    if ((cart === null) || (cart === "[]")) {
-        emptyCartText();
-        totalPriceString(0);
-    }
-
-    // If cart has items, make card templates and calculate price
-    else {
-        const savedItems = JSON.parse(cart);
-        let totalPrice = 0.00;
-          for (let index in savedItems){
-              if (savedItems.hasOwnProperty(index)) {
-                  let savedRoll = savedItems[index];
-                  CardTemplate(document.getElementById("cart-items"), savedRoll.image, savedRoll.desc, savedRoll.price);
-                  cartArray.push(savedRoll);
-                  totalPrice = totalPrice + totalPriceCart(savedRoll.price);
-              }
-         }
-
-        // Insert total price text
-        totalPriceString(totalPrice);
     }
 }
 
