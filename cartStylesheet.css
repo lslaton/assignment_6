@@ -44,6 +44,8 @@
     flex-direction: column;
     font: normal 24px/36px Oswald;
     color: #FE938C;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .text {

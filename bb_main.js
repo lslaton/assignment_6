@@ -10,9 +10,6 @@ class Roll {
 // Initialize array to hold cart items
 let cartArray = [];
 
-// Begins cart count at 0
-//let cartCount = 0;
-
 // onLoad function to keep cart count on non-cart pages
 function onLoad(){
     let count = localStorage.getItem("navCount");
@@ -71,10 +68,12 @@ function CardTemplate(parent, imgURL, text, price) {
     removeLink.onclick = function (){
         // Remove card from divContainer
         parent.removeChild(divContainer);
-        // Create updated array with cart items
+
+        // Create updated array with cart items and price counter
         let containerArray = []
         let totalPrice = 0.00;
-        // Iterate through remaining child elements
+
+        // Iterate through remaining child elements and save values
         for (let i = 0; i < parent.childElementCount; i++) {
             let child = parent.children[i];
             let containerText = child.getElementsByClassName("item-cart");
@@ -93,9 +92,18 @@ function CardTemplate(parent, imgURL, text, price) {
         // Save new array to local storage
         const jsonItem = JSON.stringify(containerArray);
         localStorage.setItem("myItem", jsonItem);
+
+        // Update nav bar count
         localStorage.setItem("navCount", JSON.stringify(containerArray.length));
         document.getElementById("cart-num").innerText = containerArray.length.toString();
+
+        // Update total text
         totalPriceString(totalPrice);
+
+        // If there are no items in cart, display empty cart text
+        if (containerArray.length === 0) {
+            emptyCartText();
+        }
 
     }
 
@@ -116,7 +124,6 @@ function CardTemplate(parent, imgURL, text, price) {
 
 // This makes the description text for the item in the cart, including name, quantity, glaze, and delivery method
 function bodyText(name, quantity, glaze, delivery) {
-
     name.className = "prod-name";
 
     // Singular roll in description
@@ -157,14 +164,14 @@ function addToCart() {
     let glaze = document.getElementById("drop-glaze").value;
     let delivery = document.getElementById("drop-deliv").value;
     let img = document.getElementById("cp-img");
-    let imgsrc = img.src;
+    let imageSource = img.src;
 
     // Format description and price for containers
     let desc = bodyText(name, quantity, glaze, delivery);
     let price = calculatePrice(name, quantity);
 
     // Create new roll object and push to array, set in local storage
-    let roll = new Roll(desc, price, imgsrc);
+    let roll = new Roll(desc, price, imageSource);
 
 
     // If local storage is null, start new array and push to local storage
@@ -193,16 +200,9 @@ function onLoadCart() {
 
     // Pull items from local storage
     const cart = localStorage.getItem("myItem");
-    if (cart === null) {
-        let emptyCart = document.createElement("h2");
-        emptyCart.innerHTML = "Cart is Empty";
-        document.getElementById("cart-items").appendChild(emptyCart);
-
-        // Update total to $0.00
-        let totalText = document.getElementById("totalText");
-        totalText.innerHTML = "Total <br> $0.00";
-        let totalDiv = document.getElementById("totalDiv");
-        totalDiv.appendChild(totalText);
+    if ((cart === null) || (cart === "[]")) {
+        emptyCartText();
+        totalPriceString(0);
     }
     else {
         const savedItems = JSON.parse(cart);
@@ -242,4 +242,11 @@ function totalPriceString(price) {
     totalText.innerHTML = "Total <br> $" + wholeNumber;
     let totalDiv = document.getElementById("totalDiv");
     totalDiv.appendChild(totalText);
+}
+
+function emptyCartText() {
+    let emptyCart = document.createElement("h2");
+    emptyCart.className = "text";
+    emptyCart.innerHTML = "Nothing in Cart!";
+    document.getElementById("cart-items").appendChild(emptyCart);
 }
