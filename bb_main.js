@@ -88,14 +88,14 @@ function CardTemplate(parent, imgURL, text, price) {
     removeLink.innerHTML = "Remove";
     erContainer.appendChild(removeLink);
     removeLink.onclick = function (){
-        // Remove card from divContainer
+        // Remove card from divContainer from https://www.w3schools.com/jsref/met_node_removechild.asp
         parent.removeChild(divContainer);
 
         // Create updated array with cart items and price counter
         let containerArray = []
         let totalPrice = 0.00;
 
-        // Iterate through remaining child elements and save values
+        // Iterate through remaining child elements and save values from https://www.w3schools.com/jsref/prop_element_childelementcount.asp
         for (let i = 0; i < parent.childElementCount; i++) {
             let child = parent.children[i];
             let containerText = child.getElementsByClassName("item-cart");
@@ -251,6 +251,10 @@ function calculatePrice(rollType, quantity) {
 
 // Calculates int value of total price of cart
 function totalPriceCart(price) {
+    // I can't find my exact source because I cleared my history, but this strategy
+    // to convert the number with a decimal into a whole number and saving it as an int
+    // was suggested on StackOverflow to help with adding numbers with decimals and
+    // keeping the number to two decimal places
     let stringPrice = price.substring(1);
     let intPrice = stringPrice.replace(".", "");
     intPrice = parseInt(intPrice);
@@ -267,6 +271,7 @@ function totalPriceString(price) {
     }
 
     else {
+        // Source: https://stackoverflow.com/questions/10741899/how-to-select-last-two-characters-of-a-string
         let stringTotal =  price.toString();
         let decimal = stringTotal.slice(-2);
         wholeNumber = stringTotal.substring(0, stringTotal.length-2) + "." + decimal;

@@ -23,6 +23,7 @@
     text-align: center;
 }
 
+/* Format cart container that will hold object cards */
 .container{
     display: flex;
     flex-direction: row;
@@ -31,6 +32,7 @@
     grid-area: 4 / 3 / span 3 / span 6;
 }
 
+/* Format card that will hold object information */
 .card{
     display: flex;
     flex-direction: row;
@@ -39,6 +41,7 @@
     padding: 20px;
 }
 
+/* Div that will hold Edit and Remove buttons */
 .edit-remove {
     display: flex;
     flex-direction: column;
@@ -48,6 +51,7 @@
     border-color: transparent;
 }
 
+/* Div that will hold text description of item in cart */
 .text {
     grid-area: 4 / 5 / span 2 / span 1;
     display: flex;
@@ -61,10 +65,7 @@
     color: #252323;
 }
 
-.prod-name {
-    color: #F5BC3A;
-}
-
+/* Div that will display the price of the item in the cart */
 .price {
     grid-area: 7 / 9 / span 2 / span 3;
     font: normal 36px/48px Oswald;
@@ -72,6 +73,7 @@
     color: #F5BC3A;
 }
 
+/* Image of item in the cart */
 .cart-pic {
     grid-area: 4 / 3 / span 2 / span 2;
     border: 2px solid #252323;
